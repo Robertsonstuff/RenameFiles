@@ -5,6 +5,13 @@ input("This will take one letter off the start of the filename in the following 
 a = input("What is the full file path? ")
 
 os.chdir(a)
+
+for f in os.listdir():
+    f_name, f_ext = os.path.splitext(f)
+    f_title = f_name.strip()[1:] 
+    new_Name = '{}{}'.format(f_title, f_ext)
+    os.rename(f, new_Name)
+    
 '''
 for f in os.listdir():
     file_name, file_ext = os.path.splitext(f)
@@ -63,16 +70,7 @@ This adds "-Example" to the end of a filename without confusing it with a file e
 dir | Rename-Item -NewName {($_.Name.substring(1))}
 This removes the first digit in the current working directory
 
-
-
-
-
-
 '''
-for f in os.listdir():
-    f_name, f_ext = os.path.splitext(f)
-    f_title = f_name.strip()[1:] 
-    new_Name = '{}{}'.format(f_title, f_ext)
-    os.rename(f, new_Name)
+
 
 
